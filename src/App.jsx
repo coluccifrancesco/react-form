@@ -68,23 +68,31 @@ function App() {
 
   return (
     <>
-      <div className='d-flex justify-content-center align-items-center mt-5'>
+      <div className='d-flex justify-content-center align-items-center flex-column mt-5'>
       
         <ul className='list-group'>
           
           {articoli.map((articolo)=>{
             
             return <li key={articolo.id} className='list-group-item d-flex justify-content-between align-items-center gap-3'>
+              
+              {/* 
+                Esercizio
+                Milestone 1
+                Creare una pagina che visualizzi una lista di articoli, 
+                mostrandone solo il titolo. 
+              */}
             
               {articolo.titolo}
 
-              <div className='gap-2 d-md-block d-lg-flex justify-content-between align-items-center'>
-                <button className='btn btn-light'>
+              <div className='gap-2 d-sm-flex align-items-center'>
+                <button className='btn btn-light my-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pen" viewBox="0 0 16 16">
                   <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
                   </svg>
                 </button>
-                <button className='btn btn-danger'>
+                
+                <button className='btn btn-danger my-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
                   <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
                   </svg>
@@ -95,20 +103,37 @@ function App() {
           })}
         
         </ul>
+
+
+        {/* 
+        Milestone 2
+        Aggiungiamo in pagina un semplice form con un campo input in cui inserire 
+        il titolo di un nuovo articolo del blog.  
+        */}
+
+        <form className='my-5 d-flex justify-content-between  flex-nowrap'>
+          
+          <div className='d-flex justify-content-between align-items-center ms-3'>
+            <label for='inputTitle' className='form-label' />
+            <input type='text' className='form-control' id='inputTitle' placeholder="Insert article's title here" />
+          </div>
+
+          <button className='btn btn-primary me-3'>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-upload-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0m-.5 14.5V11h1v3.5a.5.5 0 0 1-1 0"/>
+              </svg>
+          </button>
+        
+        </form>
       
       </div>
     </>
   )
 }
 
-// Esercizio
-// Milestone 1
-// Creare una pagina che visualizzi una lista di articoli, 
-// mostrandone solo il titolo.
 
-// Milestone 2
-// Aggiungiamo in pagina un semplice form con un campo input in cui inserire 
-// il titolo di un nuovo articolo del blog. Al submit del form, 
+
+// Al submit del form, 
 // mostrare la lista degli articoli aggiornati.
 
 // BONUS
