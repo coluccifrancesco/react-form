@@ -3,83 +3,78 @@ import './App.css'
 
 function App() {
 
-  const articoli = [
+  const titles = [
   {
-    id: 1,
     titolo: "Intelligenza Artificiale: Come sta trasformando il settore sanitario nel 2025"
   },
   {
-    id: 2,
     titolo: "Cybersecurity: Le nuove minacce ransomware e come proteggersi efficacemente"
   },
   {
-    id: 3,
     titolo: "Cloud Computing: Migrazione multi-cloud e strategie di ottimizzazione dei costi"
   },
   {
-    id: 4,
     titolo: "Sviluppo Web: Framework JavaScript più performanti per applicazioni enterprise"
   },
   {
-    id: 5,
     titolo: "DevOps: Automazione CI/CD e containerizzazione con Docker e Kubernetes"
   },
   {
-    id: 6,
     titolo: "Machine Learning: Algoritmi di deep learning per l'analisi predittiva"
   },
   {
-    id: 7,
     titolo: "Blockchain: Implementazione di smart contracts per la supply chain"
   },
   {
-    id: 8,
     titolo: "Mobile Development: App native vs cross-platform, quale scegliere?"
   },
   {
-    id: 9,
     titolo: "Database: Confronto tra SQL e NoSQL per big data e performance"
   },
   {
-    id: 10,
     titolo: "IoT: Sensori intelligenti e città smart, il futuro della connettività"
   },
-  {
-    id: 11,
+  {  
     titolo: "Quantum Computing: Progressi nella crittografia quantistica e applicazioni"
   },
-  {
-    id: 12,
+  {  
     titolo: "UX/UI Design: Principi di accessibilità e design inclusivo per il web"
   },
   {
-    id: 13,
     titolo: "API Development: REST vs GraphQL, best practices per microservizi"
   },
   {
-    id: 14,
     titolo: "Automazione: RPA e workflow intelligenti per ottimizzare i processi"
   },
   {
-    id: 15,
     titolo: "Data Science: Visualizzazione dati e storytelling per business intelligence"
   }
   ];
 
+  let [title, setTitle] = useState('');
+
+  const addTitle = e => {
+    e.preventDefault();
+    setTitle([...title, setTitle]);
+  };
+
   return (
+
+    console.log(titles),
+
     <>
       <div className='d-flex justify-content-center align-items-center flex-column mt-5'>
       
         <ul className='list-group'>
           
-          {articoli.map((articolo)=>{
+          {titles.map((articolo)=>{
             
             return <li key={articolo.id} className='list-group-item d-flex justify-content-between align-items-center gap-3'>
               
               {/* 
                 Esercizio
                 Milestone 1
-                Creare una pagina che visualizzi una lista di articoli, 
+                Creare una pagina che visualizzi una lista di titles, 
                 mostrandone solo il titolo. 
               */}
             
@@ -111,30 +106,34 @@ function App() {
         il titolo di un nuovo articolo del blog.  
         */}
 
-        <form className='my-5 d-flex justify-content-between  flex-nowrap'>
-          
-          <div className='d-flex justify-content-between align-items-center ms-3'>
-            <label for='inputTitle' className='form-label' />
-            <input type='text' className='form-control' id='inputTitle' placeholder="Insert article's title here" />
-          </div>
+        <div className='formContainer my-5'>
 
-          <button className='btn btn-primary me-3'>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-upload-fill" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0m-.5 14.5V11h1v3.5a.5.5 0 0 1-1 0"/>
-              </svg>
-          </button>
-        
-        </form>
+          <form onSubmit={addTitle} 
+          className='d-flex justify-content-between flex-nowrap m-3'>
+            
+            <input 
+            value={title} 
+            onChange={e=>{setTitle(e.target.value)}}
+            type='text' className='form-control' id='inputTitle' placeholder="Insert article's title here" />
+
+            <button className='btn btn-primary' type='submit'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cloud-upload-fill" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0m-.5 14.5V11h1v3.5a.5.5 0 0 1-1 0"/>
+                </svg>
+            </button>
+          
+          </form>
       
+        </div>
       </div>
     </>
   )
 }
 
-
-
 // Al submit del form, 
-// mostrare la lista degli articoli aggiornati.
+// mostrare la lista degli titles aggiornati.
+
+
 
 // BONUS
 // Aggiungere la possibilità di cancellare ciascun articolo utilizzando un'icona.

@@ -4,10 +4,16 @@
   box-sizing: border-box;
 }
 
-form{
-  width: 100%;
 
-  div{
-    width: 85%;
+.formContainer{
+  width: 95%;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.216);
+    
+  form{
+    
+    input{
+      width: 90%;
+    }
   }
 }
