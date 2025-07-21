@@ -1,75 +1,104 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
 
   const titles = [
   {
+    id: 1,
     titolo: "Intelligenza Artificiale: Come sta trasformando il settore sanitario nel 2025"
   },
   {
+    id: 2,
     titolo: "Cybersecurity: Le nuove minacce ransomware e come proteggersi efficacemente"
   },
   {
+    id: 3,
     titolo: "Cloud Computing: Migrazione multi-cloud e strategie di ottimizzazione dei costi"
   },
   {
+    id: 4,
     titolo: "Sviluppo Web: Framework JavaScript più performanti per applicazioni enterprise"
   },
   {
+    id: 5,
     titolo: "DevOps: Automazione CI/CD e containerizzazione con Docker e Kubernetes"
   },
   {
+    id: 6,
     titolo: "Machine Learning: Algoritmi di deep learning per l'analisi predittiva"
   },
   {
+    id: 7,
     titolo: "Blockchain: Implementazione di smart contracts per la supply chain"
   },
   {
+    id: 8,
     titolo: "Mobile Development: App native vs cross-platform, quale scegliere?"
   },
   {
+    id: 9,
     titolo: "Database: Confronto tra SQL e NoSQL per big data e performance"
   },
   {
+    id: 10,
     titolo: "IoT: Sensori intelligenti e città smart, il futuro della connettività"
   },
-  {  
+  {
+    id: 11,
     titolo: "Quantum Computing: Progressi nella crittografia quantistica e applicazioni"
   },
-  {  
+  {
+    id: 12,
     titolo: "UX/UI Design: Principi di accessibilità e design inclusivo per il web"
   },
   {
+    id: 13,
     titolo: "API Development: REST vs GraphQL, best practices per microservizi"
   },
   {
+    id: 14,
     titolo: "Automazione: RPA e workflow intelligenti per ottimizzare i processi"
   },
   {
+    id: 15,
     titolo: "Data Science: Visualizzazione dati e storytelling per business intelligence"
   }
   ];
+
+  let [titlesList, setTitlesList] = useState(titles);
 
   let [title, setTitle] = useState('');
 
   const addTitle = e => {
     e.preventDefault();
-    setTitle([...title, setTitle]);
+
+    const id = titlesList[titlesList.length - 1].id + 1
+
+    setTitlesList([...titlesList, {id, titolo:title}]);
   };
+  
+  
+  // useEffect(()=>{
+  //   console.log('Componente montato!');
+  //   return console.log('Componente smontato');
+  // },[]);
+ 
+  // useEffect(()=>{
+  //   console.log('EUREKA!');
+  // },[titles]);
+
 
   return (
-
-    console.log(titles),
 
     <>
       <div className='d-flex justify-content-center align-items-center flex-column mt-5'>
       
         <ul className='list-group'>
           
-          {titles.map((articolo)=>{
+          {titlesList.map((title)=>{
             
-            return <li key={articolo.id} className='list-group-item d-flex justify-content-between align-items-center gap-3'>
+            return <li key={title.id} className='list-group-item d-flex justify-content-between align-items-center gap-3'>
               
               {/* 
                 Esercizio
@@ -78,7 +107,7 @@ function App() {
                 mostrandone solo il titolo. 
               */}
             
-              {articolo.titolo}
+              {title.titolo}
 
               <div className='gap-2 d-sm-flex align-items-center'>
                 <button className='btn btn-light my-1'>
@@ -103,17 +132,20 @@ function App() {
         {/* 
         Milestone 2
         Aggiungiamo in pagina un semplice form con un campo input in cui inserire 
-        il titolo di un nuovo articolo del blog.  
+        il titolo di un nuovo title del blog.  
         */}
 
         <div className='formContainer my-5'>
+          
+          {/* Al submit del form, 
+          mostrare la lista degli titles aggiornati. */}
 
           <form onSubmit={addTitle} 
           className='d-flex justify-content-between flex-nowrap m-3'>
             
             <input 
             value={title} 
-            onChange={e=>{setTitle(e.target.value)}}
+            onChange={e=>setTitle(e.target.value)}
             type='text' className='form-control' id='inputTitle' placeholder="Insert article's title here" />
 
             <button className='btn btn-primary' type='submit'>
@@ -130,13 +162,11 @@ function App() {
   )
 }
 
-// Al submit del form, 
-// mostrare la lista degli titles aggiornati.
 
 
 
 // BONUS
-// Aggiungere la possibilità di cancellare ciascun articolo utilizzando un'icona.
+// Aggiungere la possibilità di cancellare ciascun title utilizzando un'icona.
 // Implementare la funzionalità di modifica del titolo di un post
 
 export default App
